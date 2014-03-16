@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/caix0019/git/CZ3003CMS/Facebook&amp;SMS/org.json-20120521.jar"/>
+	<classpathentry kind="lib" path="/home/caix0019/git/CZ3003CMS/Facebook&amp;SMS/restfb-1.6.14.jar"/>
+	<classpathentry kind="lib" path="/home/caix0019/git/CZ3003CMS/Facebook&amp;SMS/twilio-java-sdk-3.4.2-jar-with-dependencies.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
