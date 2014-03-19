@@ -3,14 +3,20 @@
 	<head>
 		<title>Login Page</title>
 		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/ecmascript" src="sha1.js"></script>   
 		<script type="text/javascript">
 			function login() {
 				// User input data
 				user = {};
 				user.cmd = "login";
 				user.param1 = $('#name').val();
-				user.param2 = $('#password').val();
+				user.param2 = hashPassword($('#password').val());
+				alert(user.param2);
 				validateWithServer(user);
+			}
+
+			function hashPassword(password) {
+				return hex_sha1(password);
 			}
 
 			function validateWithServer(user) {
