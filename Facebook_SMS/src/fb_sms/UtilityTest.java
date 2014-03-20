@@ -23,6 +23,9 @@ public class UtilityTest {
 	    if (Utility.sms_auth_token == null){
 	        fail ("sms_auth_token empty");	
 	    }
+	    if (Utility.hp_number == null){
+	    	fail ("hp_number empty");
+	    }
 	    
 		
 	}

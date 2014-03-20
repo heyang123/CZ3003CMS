@@ -40,7 +40,7 @@ public class SMSMgr{
 		MsgGenerator msgObj = new MsgGenerator();
 		String msgBody = msgObj.generateMsg(jsonObj);
 		params.put("Body", msgBody);
-		params.put("To", "+6591093433"); //need to get PMO phone number from Database
+		params.put("To", Utility.hp_number); //need to get PMO phone number from config.ini
 		params.put("From", "+18127624919");
 		SmsFactory messageFactory = client.getAccount().getSmsFactory();
 		Sms message = messageFactory.create(params);
