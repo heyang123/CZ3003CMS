@@ -9,9 +9,9 @@ public class MsgGenerator {
 		
 	}
 	
-	public String generateMsg() throws JSONException{
+	public String generateMsg(JSONObject jsonObj) throws JSONException{
 		IncidentInfo incidentInfoObj = new IncidentInfo();
-		JSONObject jsonObj = incidentInfoObj.jsonGenerator();
+		//JSONObject jsonObj = incidentInfoObj.jsonGenerator();
 		String a = incidentInfoObj.getIncidentType(jsonObj);
 		String b = incidentInfoObj.getIncidentLocation(jsonObj);
 		String c = incidentInfoObj.getIncidentDetails(jsonObj);
