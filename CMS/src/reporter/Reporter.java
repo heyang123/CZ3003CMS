@@ -53,6 +53,12 @@ public class Reporter {
 	 * @return
 	 * @throws JRException
 	 */
+	public Reporter(String designPath, String exportPath) throws FileNotFoundException {
+		Date date = new Date();
+		Timestamp timestamp = new Timestamp(date.getTime());
+		reportGenerator = new ReportGenerator(designPath, exportPath + timestamp);
+	}
+	
 	public String generateReport(ReportData data) throws JRException {
 		ArrayList<EmergencyCall> emergencies = data.getEmergencies();
 		String exportPath = reportGenerator.generateReport(emergencies);
