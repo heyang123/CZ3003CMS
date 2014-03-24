@@ -2,6 +2,12 @@ package reporter;
 
 import java.sql.Date;
 
+/**
+ * A data class used for grouping the information from a reported emergency.Contains a lot of fields,
+ *  their associated getters and setters and constructors. Implements the comparable interface for EmergencyCalls. 
+ * @author Henrik
+ *
+ */
 public class EmergencyCall implements Comparable<EmergencyCall> {
 	
 	private String name, phoneNumber, detailedLocation, typeOfAssistance;
@@ -60,6 +66,17 @@ public class EmergencyCall implements Comparable<EmergencyCall> {
 		this.highPriority = highPriority;
 	}
 	
+	/**
+	 * The commonly used constructor. Initializes all the data fields.
+	 * @param name
+	 * @param phoneNumber
+	 * @param detailedLocation
+	 * @param typeOfAssistance
+	 * @param reportingTime
+	 * @param cause
+	 * @param highPriority
+	 * @param location
+	 */
 	public EmergencyCall(String name, String phoneNumber, String detailedLocation, String typeOfAssistance,
 			Date reportingTime, Cause cause, boolean highPriority, Location location) {
 		this.name = name;
@@ -72,10 +89,17 @@ public class EmergencyCall implements Comparable<EmergencyCall> {
 		this.location = location;
 	}
 	
+	/**
+	 * Empty constructor, mainly used for testing purposes. Kept for flexibility.
+	 */
 	public EmergencyCall() {
 		
 	}
 	
+	/**
+	 * Implementation of the comparable interface. Sorts first by high priority, and then by location.
+	 * Uses the sortingValue field of the Location enum for the sorting by location.
+	 */
 	public int compareTo(EmergencyCall other) {
 		if (this.highPriority && ! other.highPriority) {
 			return -1;
