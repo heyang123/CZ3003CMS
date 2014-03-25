@@ -13,7 +13,7 @@ public class Server {
 	
 	public static boolean validateUser(User user) {
 		EXAMPLE_USER.setUsername("yang");
-		EXAMPLE_USER.setPassword("3003");
+		EXAMPLE_USER.setPassword("a4380923dd651c195b1631af7c829187");
 		if (user.equals(EXAMPLE_USER)) {
 			return true;
 		} else {
@@ -22,7 +22,7 @@ public class Server {
 	}
 	
 	public static boolean recordInfo(InfoRecord infoRecord) {
-		System.out.print(infoRecord);
+		System.out.print(infoRecord.toString());
 		return true;
 	}
 }

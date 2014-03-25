@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import control.InfoRecordController;
 import model.InfoRecord;
@@ -35,15 +36,24 @@ public class InfoRecordServlet extends HttpServlet implements Servlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		// Get session
+		HttpSession session = request.getSession();
+		//
+		String operatorName = (String) session.getAttribute("username");
+		System.out.print(operatorName);
 		String name = request.getParameter("name");
-		String mobileNumber = request.getParameter("mobileNumber");
-		String location = request.getParameter("location");
-		String type = request.getParameter("type");
+		String phoneNo = request.getParameter("phoneNo");
+		String agencyAddress = request.getParameter("agencyAddress");
+		String agencyType = request.getParameter("agencyType");
+		String postalCode = request.getParameter("postalCode");
+		// System.out.println(Integer.parseInt(agencyType));
+		this.infoRecord.setOperatorName(operatorName);
 		this.infoRecord.setName(name);
-		this.infoRecord.setMobileNumber(mobileNumber);
-		this.infoRecord.setLocation(location);
-		this.infoRecord.setTypeOfAssistanceRequest(type);
-		this.infoRecordController.submitInfoRecord(infoRecord, response);
+		this.infoRecord.setPhoneNo(phoneNo);
+		this.infoRecord.setAgencyAddress(agencyAddress);
+		this.infoRecord.setAgencyType(Integer.parseInt(agencyType));
+		this.infoRecord.setPostalCode(postalCode);
+		this.infoRecordController.submitInfoRecord(infoRecord, response, session);
 	}
 	/**
 	 * Default serial id
