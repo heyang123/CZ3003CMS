@@ -1,5 +1,10 @@
 package reporter;
 
+/**
+ * Enum for different causes. Contains a string field used in the report.
+ * @author Henrik
+ *
+ */
 public enum Cause {
 	HAZE("Haze"), DENGUEOUTBREAK("Dengue Outbreak");
 	

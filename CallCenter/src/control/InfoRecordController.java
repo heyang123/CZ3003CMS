@@ -3,6 +3,7 @@ package control;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.InfoRecord;
 import model.ServerCommunication;
@@ -13,12 +14,14 @@ public class InfoRecordController {
 		this.serverCommunication = new ServerCommunication();
 	}
 	// TODO 1. error handling 2. alert message
-	public void submitInfoRecord(InfoRecord infoRecord, HttpServletResponse response) throws IOException {
+	public void submitInfoRecord(InfoRecord infoRecord, HttpServletResponse response, HttpSession session) throws IOException {
 		boolean result = this.serverCommunication.submitInfoRecord(infoRecord);
+		String recSucMsg = "S";
+		String recFailMsg = "F";
 		if (result) {
-			System.out.print("Record successful");
+			session.setAttribute("recMsg", recSucMsg);
 		} else {
-			System.out.print("Record fail");
+			session.setAttribute("recMsg", recFailMsg);
 		}
 		response.sendRedirect("keyInInfo.jsp");
 	}

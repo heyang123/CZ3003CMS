@@ -5,7 +5,11 @@ import java.util.Vector;
 
 public class BeanFactory {
 	
-	
+	/**
+	 * Class that was only used for the design of the design template. Not used during
+	 * generation of the report.
+	 * @return
+	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Vector createBeanCollection() {
 		Vector vector = new Vector();
