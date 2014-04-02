@@ -19,6 +19,10 @@ public class OutputMgr {
 	SMSMgr.sendSMS(jsonObj);
 	}
 	
+	public void outputSMS(JSONObject jsonobj) throws TwilioRestException, JSONException{
+		SMSMgr.sendSMS(jsonobj);
+	}
+	
 	/*public static void main(String[] args) throws JSONException, TwilioRestException{
 		OutputMgr output = new OutputMgr();
 		output.outputAll();

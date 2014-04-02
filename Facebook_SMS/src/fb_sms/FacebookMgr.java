@@ -34,7 +34,7 @@ public class FacebookMgr {
 		out.println("*Feed publishing*");
 		MsgGenerator msgObj = new MsgGenerator();
 		String msgBody = msgObj.generateMsg(jsonObj);
-		FacebookType publishMessageResponse = facebookClient.publish("415711438563950/feed", FacebookType.class, Parameter.with("message",msgBody));
+		FacebookType publishMessageResponse = facebookClient.publish("427510184018522/feed", FacebookType.class, Parameter.with("message",msgBody));
 		
 		out.println("Published message ID: " + publishMessageResponse.getId());
 		return publishMessageResponse.getId();
