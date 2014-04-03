@@ -32,7 +32,7 @@ public class SMSMgr{
 	}
 	
 	//check with PM if need return value. return value can be Sid.(means send successfully)
-	public static String sendSMS(JSONObject jsonObj) throws TwilioRestException, JSONException{
+	public static String sendSMS(JSONObject jsonObj, String hpNumber) throws TwilioRestException, JSONException{
 		TwilioRestClient client = new TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN);
 		// Build a filter for the SmsList
 		Map<String, String> params = new HashMap<String, String>();
@@ -40,7 +40,7 @@ public class SMSMgr{
 		MsgGenerator msgObj = new MsgGenerator();
 		String msgBody = msgObj.generateMsg(jsonObj);
 		params.put("Body", msgBody);
-		params.put("To", Utility.hp_number); //need to get PMO phone number from config.ini
+		params.put("To", hpNumber); //need to get PMO phone number from config.ini
 		params.put("From", "+18127624919");
 		SmsFactory messageFactory = client.getAccount().getSmsFactory();
 		Sms message = messageFactory.create(params);

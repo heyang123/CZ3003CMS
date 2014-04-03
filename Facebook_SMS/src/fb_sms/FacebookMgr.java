@@ -41,6 +41,15 @@ public class FacebookMgr {
 		
 	}
 	
+	public static String post2FbPageJasperReports(String JasperReportsUrl) {
+		out.println("*Feed publishing*");
+		String msgBody = "Jasper Reports Link: " + JasperReportsUrl;
+		FacebookType publishMessageResponse = facebookClient.publish("427510184018522/feed", FacebookType.class, Parameter.with("message",msgBody));
+		
+		out.println("Published message ID: " + publishMessageResponse.getId());
+		return publishMessageResponse.getId();
+	}
+	
 	/*public static void main(String[] args) throws JSONException{
 		FacebookMgr testObj = new FacebookMgr();
 		testObj.Post2FbPage();
