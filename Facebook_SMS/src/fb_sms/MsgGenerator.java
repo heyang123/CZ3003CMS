@@ -15,8 +15,9 @@ public class MsgGenerator {
 		String a = incidentInfoObj.getIncidentType(jsonObj);
 		String b = incidentInfoObj.getIncidentLocation(jsonObj);
 		String c = incidentInfoObj.getIncidentDetails(jsonObj);
+		String d = incidentInfoObj.getCdsLocation(jsonObj);
 		String timeStamp = new SimpleDateFormat("yyyyMMdd_HH:mm:ss").format(Calendar.getInstance().getTime());
-		String msgContent = "Message from CMS:\n"+ "Incident Type: "+a+"\nIncident Location: "+b+"\nIncident Details: "+c+"\nUpdated at "+ timeStamp ; 
+		String msgContent = "Message from CMS:\n"+ "Incident Type: "+a+"\nIncident Location: "+b+"\nIncident Details: "+c+"\n\nLocation of Civil Defence Shelters:\n"+d+"\n\nUpdated at "+ timeStamp ; 
 	
 		return msgContent;
 	}

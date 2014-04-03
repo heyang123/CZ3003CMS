@@ -14,11 +14,13 @@ public class IncidentInfoTest {
 		jsonObj.put("type", "haze");
 		jsonObj.put("location", "JurongEast");
 		jsonObj.put("details", "PM2.5 is 200");
+		jsonObj.put("cds_location", "30 Boon Lay Way");
 		
 		IncidentInfo testObj = new IncidentInfo();
 		String a = testObj.getIncidentType(jsonObj);
 		String b = testObj.getIncidentLocation(jsonObj);
 		String c = testObj.getIncidentDetails(jsonObj);
+		String d = testObj.getCdsLocation(jsonObj);
 		
 		if (a == null){
 			fail("Wrong with getIncidentType()");
@@ -31,6 +33,11 @@ public class IncidentInfoTest {
 		if (c == null){
 			fail("Wrong with getIncidentDetails()");
 		}
+		
+		if (d == null){
+			fail("Wrong with getCdsLocation()");
+		}
+		
 	}
 
 }

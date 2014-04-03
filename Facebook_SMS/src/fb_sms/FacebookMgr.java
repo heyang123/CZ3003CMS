@@ -2,6 +2,8 @@ package fb_sms;
 import static java.lang.System.out;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,7 +45,8 @@ public class FacebookMgr {
 	
 	public static String post2FbPageJasperReports(String JasperReportsUrl) {
 		out.println("*Feed publishing*");
-		String msgBody = "Jasper Reports Link: " + JasperReportsUrl;
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HH:mm:ss").format(Calendar.getInstance().getTime());
+		String msgBody = "Message from CMS: \n This is a report summarizing emergency situation. Please kindly have a look at it: \n" + JasperReportsUrl + "\nUpdated at "+timeStamp;
 		FacebookType publishMessageResponse = facebookClient.publish("427510184018522/feed", FacebookType.class, Parameter.with("message",msgBody));
 		
 		out.println("Published message ID: " + publishMessageResponse.getId());

@@ -16,6 +16,7 @@ public class SMSMgrTest {
 		jsonObj.put("type", "haze");
 		jsonObj.put("location", "JurongEast");
 		jsonObj.put("details", "PM2.5 is 200");
+		jsonObj.put("cds_location", "15 Nanyang Link");
 		String hpNumber = "+6591093433";
 		String a = SMSMgr.sendSMS(jsonObj, hpNumber);
 		
