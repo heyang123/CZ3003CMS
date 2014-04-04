@@ -18,8 +18,8 @@ public class ReportData {
 	 * @param emergencies
 	 */
 	public ReportData(ArrayList<EmergencyCall> emergencies) {
-		this.emergencies = emergencies;
 		Collections.sort(emergencies);
+		this.emergencies = emergencies;
 	}
 	
 	/**

@@ -13,9 +13,21 @@ public class EmergencyCall implements Comparable<EmergencyCall> {
 	private String name, phoneNumber, detailedLocation, typeOfAssistance;
 	private Date reportingTime;
 	private Cause cause;
-	private boolean highPriority;
 	private Location location;
-	
+	private int numberOfDengues, psi;
+
+	public int getPsi() {
+		return psi;
+	}
+	public void setPsi(int psi) {
+		this.psi = psi;
+	}
+	public int getNumberOfDengues() {
+		return numberOfDengues;
+	}
+	public void setNumberOfDengues(int numberOfDengues) {
+		this.numberOfDengues = numberOfDengues;
+	}
 	public String getDetailedLocation() {
 		return detailedLocation;
 	}
@@ -59,12 +71,6 @@ public class EmergencyCall implements Comparable<EmergencyCall> {
 	public void setCause(Cause cause) {
 		this.cause = cause;
 	}
-	public boolean isHighPriority() {
-		return highPriority;
-	}
-	public void setHighPriority(boolean highPriority) {
-		this.highPriority = highPriority;
-	}
 	
 	/**
 	 * The commonly used constructor. Initializes all the data fields.
@@ -78,16 +84,36 @@ public class EmergencyCall implements Comparable<EmergencyCall> {
 	 * @param location
 	 */
 	public EmergencyCall(String name, String phoneNumber, String detailedLocation, String typeOfAssistance,
-			Date reportingTime, Cause cause, boolean highPriority, Location location) {
+			Date reportingTime, Cause cause, Location location) {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.detailedLocation = detailedLocation;
 		this.typeOfAssistance = typeOfAssistance;
 		this.reportingTime = reportingTime;
 		this.cause = cause;
-		this.highPriority = highPriority;
 		this.location = location;
 	}
+
+	/**
+	 * Constructor used for dengue or haze, uses a boolean parameter to tell the difference
+	 * @param location
+	 * @param detailedLocation
+	 * @param numericalValue
+	 * @param isDengue
+	 */
+	public EmergencyCall(Location location, String detailedLocation, int numericalValue, Cause cause) {
+		if (cause == Cause.DENGUE) {
+			this.numberOfDengues = numericalValue;
+		}
+		else if (cause == Cause.HAZE) {
+			this.psi = numericalValue;
+		}
+		this.location = location;
+		this.detailedLocation = detailedLocation;
+		this.cause = cause;
+	}
+	
+	
 	
 	/**
 	 * Empty constructor, mainly used for testing purposes. Kept for flexibility.
@@ -101,13 +127,9 @@ public class EmergencyCall implements Comparable<EmergencyCall> {
 	 * Uses the sortingValue field of the Location enum for the sorting by location.
 	 */
 	public int compareTo(EmergencyCall other) {
-		if (this.highPriority && ! other.highPriority) {
-			return -1;
-		}
-		else if (!this.highPriority && other.highPriority) {
+		if ((this.numberOfDengues != 0 || this.psi != 0) || (other.numberOfDengues != 0 || other.psi != 0)) {
 			return 1;
 		}
-		else {
 		if (this.location.getSortingValue() < other.location.getSortingValue()) {
 			return -1;
 		}
@@ -120,7 +142,6 @@ public class EmergencyCall implements Comparable<EmergencyCall> {
 		}
 		else {
 			return 1;
-		}
 		}
 	}
 }

@@ -28,7 +28,7 @@ public class Reporter {
 	public Reporter(String designPath, String exportPath) throws FileNotFoundException {
 		Date date = new Date();
 		Timestamp timestamp = new Timestamp(date.getTime());
-		reportGenerator = new ReportGenerator(designPath, exportPath + timestamp);
+		reportGenerator = new ReportGenerator(designPath, exportPath + timestamp + ".pdf");
 	}
 	/**
 	 * A getter for the data field, returns an object of type ReportData.
@@ -53,12 +53,6 @@ public class Reporter {
 	 * @return
 	 * @throws JRException
 	 */
-	public Reporter(String designPath, String exportPath) throws FileNotFoundException {
-		Date date = new Date();
-		Timestamp timestamp = new Timestamp(date.getTime());
-		reportGenerator = new ReportGenerator(designPath, exportPath + timestamp);
-	}
-	
 	public String generateReport(ReportData data) throws JRException {
 		ArrayList<EmergencyCall> emergencies = data.getEmergencies();
 		String exportPath = reportGenerator.generateReport(emergencies);
