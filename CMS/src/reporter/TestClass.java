@@ -17,21 +17,12 @@ public class TestClass {
 	
 	private static ReportData createReportData() {
 		ArrayList<EmergencyCall> mockupCalls = new ArrayList<EmergencyCall>();
-		mockupCalls.add(new EmergencyCall("Henrik", "12345678", "LWN", "ambulance",new Date(System.currentTimeMillis()), Cause.EMERGENCYCALL, Location.SOUTHEAST));
-		mockupCalls.add(new EmergencyCall("Thomas", "2345679", "TCT", "police",new Date(System.currentTimeMillis()), Cause.EMERGENCYCALL,  Location.NORTHEAST));
-		mockupCalls.add(new EmergencyCall(Location.CENTRAL, "Clarke Quay", 100, Cause.DENGUE));
-		mockupCalls.add(new EmergencyCall(Location.CENTRAL, "Clarke Quay", 100, Cause.DENGUE));
-		mockupCalls.add(new EmergencyCall(Location.CENTRAL, "Clarke Quay", 100, Cause.DENGUE));
-		mockupCalls.add(new EmergencyCall(Location.CENTRAL, "Clarke Quay", 100, Cause.DENGUE));
-		mockupCalls.add(new EmergencyCall(Location.CENTRAL, "Clarke Quay", 100, Cause.DENGUE));
-		mockupCalls.add(new EmergencyCall(Location.NORTHEAST, "Chinese Garden", 150, Cause.DENGUE));
-		mockupCalls.add(new EmergencyCall(Location.NORTHEAST, "Chinese Garden", 150, Cause.DENGUE));
-		mockupCalls.add(new EmergencyCall(Location.NORTHEAST, "Chinese Garden", 150, Cause.DENGUE));
-		mockupCalls.add(new EmergencyCall(Location.NORTHEAST, "Chinese Garden", 150, Cause.DENGUE));
-		mockupCalls.add(new EmergencyCall(Location.NORTHEAST, "Chinese Garden", 150, Cause.DENGUE));
-		mockupCalls.add(new EmergencyCall(Location.NORTHEAST, "Chinese Garden", 150, Cause.DENGUE));
-		mockupCalls.add(new EmergencyCall(Location.SOUTHWEST, "Lakeside", 39, Cause.HAZE));
-		mockupCalls.add(new EmergencyCall(Location.SOUTHEAST, "Jurong West", 49, Cause.HAZE));
+		mockupCalls.add(new EmergencyCall("Henrik", "12345678", "LWN",new Date(System.currentTimeMillis()), Cause.EMERGENCYCALL));
+		mockupCalls.add(new EmergencyCall("Thomas", "2345679", "TCT",new Date(System.currentTimeMillis()), Cause.EMERGENCYCALL));
+		mockupCalls.add(new EmergencyCall("Clarke Quay", 100, Cause.DENGUE));
+		mockupCalls.add(new EmergencyCall("Chinese Garden", 150, Cause.DENGUE));
+		mockupCalls.add(new EmergencyCall("Lakeside", 39, Cause.HAZE));
+		mockupCalls.add(new EmergencyCall("Jurong West", 49, Cause.HAZE));
 		ReportData mockupReportData = new ReportData(mockupCalls);
 		return mockupReportData;
 	}

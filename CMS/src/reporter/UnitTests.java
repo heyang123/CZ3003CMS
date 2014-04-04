@@ -20,9 +20,9 @@ public class UnitTests {
 	
 	@Before
 	public void setUp() {
-		EmergencyCall testEmergency1 = new EmergencyCall("Henrik", "12345678", "LWN", "ambulance",new Date(System.currentTimeMillis()), Cause.HAZE, Location.SOUTHEAST);
-		EmergencyCall testEmergency2 = new EmergencyCall("Thomas", "23456789", "TCT", "police",new Date(System.currentTimeMillis()), Cause.DENGUE, Location.NORTHEAST);
-		emergencyCall = new EmergencyCall("Thomas", "23456789", "TCT", "police",new Date(System.currentTimeMillis()), Cause.DENGUE, Location.NORTHEAST);
+		EmergencyCall testEmergency1 = new EmergencyCall("Henrik", "12345678", "LWN",new Date(System.currentTimeMillis()), Cause.HAZE);
+		EmergencyCall testEmergency2 = new EmergencyCall("Thomas", "23456789", "TCT",new Date(System.currentTimeMillis()), Cause.DENGUE);
+		emergencyCall = new EmergencyCall("Thomas", "23456789", "TCT",new Date(System.currentTimeMillis()), Cause.DENGUE);
 		emergencies = new ArrayList<EmergencyCall>();
 		emergencies.add(testEmergency1);
 		emergencies.add(testEmergency2);
@@ -46,10 +46,8 @@ public class UnitTests {
 		assertEquals("Thomas", emergencyCall.getName());
 		assertEquals("23456789", emergencyCall.getPhoneNumber());
 		assertEquals("TCT", emergencyCall.getDetailedLocation());
-		assertEquals("police", emergencyCall.getTypeOfAssistance());
 		assertEquals(Date.class, emergencyCall.getReportingTime().getClass());
 		assertEquals(Cause.DENGUE, emergencyCall.getCause());
-		assertEquals(Location.NORTHEAST, emergencyCall.getLocation());
 	}
 	
 	@Test
