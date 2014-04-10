@@ -30,11 +30,13 @@ public class OutputMgr {
 		FacebookMgr.post2FbPageJasperReports(JasperReportsUrl);
 	}
 	
-	public void outputSMS(JSONObject jsonobj, String[] hpNumberArray) throws TwilioRestException, JSONException{
-		for (int i = 0; i < hpNumberArray.length; i++) {
+	public void outputSMS(JSONArray jsonArr, String[] hpNumberArray) throws TwilioRestException, JSONException{
+		for(int i=0; i< jsonArr.length(); i++){
+			for (int j = 0; j < hpNumberArray.length; j++) {
 	         //System.out.println(hpNumberArray[i] + " ");
-	         SMSMgr.sendSMS(jsonobj,hpNumberArray[i]);
+	         SMSMgr.sendSMS(jsonArr.getJSONObject(i),hpNumberArray[j]);
 	      }
+		}
 		
 	}
 	
