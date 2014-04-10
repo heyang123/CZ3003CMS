@@ -6,7 +6,7 @@ package reporter;
  *
  */
 public enum Cause {
-	HAZE("Haze"), DENGUEOUTBREAK("Dengue Outbreak");
+	HAZE("Haze"), DENGUE("Dengue Outbreak"), EMERGENCYCALL("Emergency Call");
 	
 	private String tostr;
 	

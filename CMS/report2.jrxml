@@ -15,141 +15,160 @@
 	<field name="detailedLocation" class="java.lang.String">
 		<fieldDescription><![CDATA[detailedLocation]]></fieldDescription>
 	</field>
-	<field name="highPriority" class="java.lang.Boolean">
-		<fieldDescription><![CDATA[highPriority]]></fieldDescription>
-	</field>
-	<field name="location" class="java.lang.String">
-		<fieldDescription><![CDATA[location]]></fieldDescription>
-	</field>
 	<field name="name" class="java.lang.String">
 		<fieldDescription><![CDATA[name]]></fieldDescription>
+	</field>
+	<field name="numberOfDengues" class="java.lang.Integer">
+		<fieldDescription><![CDATA[numberOfDengues]]></fieldDescription>
 	</field>
 	<field name="phoneNumber" class="java.lang.String">
 		<fieldDescription><![CDATA[phoneNumber]]></fieldDescription>
 	</field>
+	<field name="psi" class="java.lang.Integer">
+		<fieldDescription><![CDATA[psi]]></fieldDescription>
+	</field>
 	<field name="reportingTime" class="java.sql.Date">
 		<fieldDescription><![CDATA[reportingTime]]></fieldDescription>
-	</field>
-	<field name="typeOfAssistance" class="java.lang.String">
-		<fieldDescription><![CDATA[typeOfAssistance]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="130" splitType="Stretch">
 			<staticText>
-				<reportElement x="51" y="35" width="370" height="44" uuid="c48a3e10-0eb4-4e91-86c0-223e38acc91f"/>
+				<reportElement x="110" y="28" width="315" height="44" uuid="c48a3e10-0eb4-4e91-86c0-223e38acc91f"/>
 				<textElement>
 					<font size="36"/>
 				</textElement>
 				<text><![CDATA[Report from CMS]]></text>
 			</staticText>
-			<textField pattern="MM/dd/yyyy">
-				<reportElement x="432" y="47" width="123" height="22" uuid="9aa1f638-fb1b-46ec-b474-4ccaac9a29ce"/>
+			<staticText>
+				<reportElement x="36" y="84" width="489" height="38" uuid="1591120d-b7f4-4b00-9c55-e99d940fbc44"/>
 				<textElement>
-					<font size="14" isBold="true"/>
+					<font isItalic="true"/>
 				</textElement>
+				<text><![CDATA[The information in this report is gathered from the last 30 minutes before this report was produced. Haze cases are shown first, followed by dengue outbreaks, and finally comes all the emergency calls.]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement x="441" y="28" width="148" height="20" uuid="f65c09a5-5c65-4218-9559-d0e76e5ad652"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="441" y="14" width="100" height="20" uuid="7bf99141-bb6c-4d6f-b5b9-2efb87cead9f"/>
+				<text><![CDATA[Generated:]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="49" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="166" splitType="Stretch">
+		<band height="86">
+			<elementGroup>
+				<staticText>
+					<reportElement x="274" y="1" width="100" height="20" isRemoveLineWhenBlank="true" uuid="3025ae9e-c900-4db1-9cc0-7719e70edf91">
+						<printWhenExpression><![CDATA[$F{cause}.toString().equals("Emergency Call")]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Reporting time:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="349" y="1" width="100" height="20" isRemoveLineWhenBlank="true" uuid="eec5d821-ce09-4d5b-9566-f87b3333c911">
+						<printWhenExpression><![CDATA[$F{cause}.toString().equals("Emergency Call")]]></printWhenExpression>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{reportingTime}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="42" width="100" height="20" isRemoveLineWhenBlank="true" uuid="3552f30f-580f-48f0-974b-d289bc01d1f2">
+						<printWhenExpression><![CDATA[$F{cause}.toString().equals("Emergency Call")]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Name of caller:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="20" width="100" height="20" isRemoveLineWhenBlank="true" uuid="ddd46f74-1bb5-4915-92a3-9f201e60ed1c"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Location:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="65" y="20" width="100" height="20" isRemoveLineWhenBlank="true" uuid="aa2b9629-d339-4710-99c1-f89c828df857"/>
+					<textFieldExpression><![CDATA[$F{detailedLocation}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="87" y="43" width="100" height="20" isRemoveLineWhenBlank="true" uuid="45e7a35d-2787-4916-8793-5019cdb297f1">
+						<printWhenExpression><![CDATA[$F{cause}.toString().equals("Emergency Call")]]></printWhenExpression>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="87" y="63" width="100" height="20" isRemoveLineWhenBlank="true" uuid="579013d6-b51d-4615-a568-c5c46cef7705">
+						<printWhenExpression><![CDATA[$F{cause}.toString().equals("Emergency Call")]]></printWhenExpression>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{phoneNumber}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="63" width="100" height="20" isRemoveLineWhenBlank="true" uuid="6f6bfd62-d8e8-4705-96a0-9190fb0e1504">
+						<printWhenExpression><![CDATA[$F{cause}.toString().equals("Emergency Call")]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Phone number:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="100" y="2" width="100" height="20" isRemoveLineWhenBlank="true" uuid="77167861-b5c8-4943-a93d-e56e043d5cbc"/>
+					<textFieldExpression><![CDATA[""+$F{cause}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="2" width="100" height="20" isRemoveLineWhenBlank="true" uuid="2a9da6d8-cdf5-4ca4-a13d-9871d475356f"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Type of incident:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="274" y="2" width="100" height="20" isRemoveLineWhenBlank="true" uuid="ae1c483b-78aa-44bf-a64f-1f992fe90306">
+						<printWhenExpression><![CDATA[$F{cause}.toString().equals("Haze")]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[PSI: ]]></text>
+				</staticText>
+			</elementGroup>
 			<staticText>
-				<reportElement x="0" y="0" width="100" height="20" uuid="5b36dd47-dd38-400d-a353-18cf1b893624"/>
+				<reportElement x="274" y="2" width="123" height="20" uuid="186b17a2-5d8f-49c0-a7b5-51f1abc98aac">
+					<printWhenExpression><![CDATA[$F{cause}.toString().equals("Dengue Outbreak")]]></printWhenExpression>
+				</reportElement>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[High Priority:]]></text>
+				<text><![CDATA[Number of occurences: ]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="71" y="0" width="100" height="20" uuid="0a5e9ad2-7da5-4fb5-a4cc-a4d2f8033ed9"/>
-				<textFieldExpression><![CDATA[$F{highPriority}]]></textFieldExpression>
+			<textField isBlankWhenNull="true">
+				<reportElement x="403" y="2" width="123" height="20" isRemoveLineWhenBlank="true" uuid="10ca67d3-9e77-489c-8c3f-e2c5304a9fcf">
+					<printWhenExpression><![CDATA[$F{cause}.toString().equals("Dengue Outbreak")]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{numberOfDengues}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="274" y="0" width="100" height="20" uuid="3025ae9e-c900-4db1-9cc0-7719e70edf91"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Reporting time:]]></text>
-			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="664563a2-99a0-4620-8b1d-ba2966953e46"/>
+			</line>
 			<textField>
-				<reportElement x="349" y="0" width="100" height="20" uuid="eec5d821-ce09-4d5b-9566-f87b3333c911"/>
-				<textFieldExpression><![CDATA[$F{reportingTime}]]></textFieldExpression>
+				<reportElement x="397" y="1" width="100" height="20" uuid="2ca33330-94f7-43c2-aa7f-4bea749b9588">
+					<printWhenExpression><![CDATA[$F{cause}.toString().equals("Haze")]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{psi}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="0" y="20" width="100" height="20" uuid="ddd46f74-1bb5-4915-92a3-9f201e60ed1c"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Location:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="51" y="20" width="100" height="20" uuid="aa2b9629-d339-4710-99c1-f89c828df857"/>
-				<textFieldExpression><![CDATA[$F{detailedLocation}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="87" y="40" width="100" height="20" uuid="45e7a35d-2787-4916-8793-5019cdb297f1"/>
-				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="40" width="100" height="20" uuid="61cc3d6a-a889-40e8-9894-0d41eb82a4b5"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Name of caller:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="87" y="60" width="100" height="20" uuid="579013d6-b51d-4615-a568-c5c46cef7705"/>
-				<textFieldExpression><![CDATA[$F{phoneNumber}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="60" width="100" height="20" uuid="6f6bfd62-d8e8-4705-96a0-9190fb0e1504"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Phone number:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="100" y="80" width="113" height="20" uuid="9e60bc74-33cd-489f-9f2e-68e6f484bfe6"/>
-				<textFieldExpression><![CDATA[$F{typeOfAssistance}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="80" width="100" height="20" uuid="78d4cfba-5da8-4f9a-b3ec-7aa590bac191"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Type of assistance:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="51" y="100" width="100" height="20" uuid="77167861-b5c8-4943-a93d-e56e043d5cbc"/>
-				<textFieldExpression><![CDATA[""+$F{cause}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="100" width="100" height="20" uuid="2a9da6d8-cdf5-4ca4-a13d-9871d475356f"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Cause:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="51" y="120" width="100" height="20" uuid="e74274b1-0eb9-4e76-810a-37f96d516324"/>
-				<textFieldExpression><![CDATA[$F{location}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="120" width="100" height="20" uuid="f540f80c-4dd4-4ee6-bff6-c20a5ce3ed85"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Location:]]></text>
-			</staticText>
 		</band>
 	</detail>
 	<columnFooter>

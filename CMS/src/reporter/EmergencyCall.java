@@ -10,12 +10,23 @@ import java.sql.Date;
  */
 public class EmergencyCall implements Comparable<EmergencyCall> {
 	
-	private String name, phoneNumber, detailedLocation, typeOfAssistance;
+	private String name, phoneNumber, detailedLocation;
 	private Date reportingTime;
 	private Cause cause;
-	private boolean highPriority;
-	private Location location;
-	
+	private int numberOfDengues, psi;
+
+	public int getPsi() {
+		return psi;
+	}
+	public void setPsi(int psi) {
+		this.psi = psi;
+	}
+	public int getNumberOfDengues() {
+		return numberOfDengues;
+	}
+	public void setNumberOfDengues(int numberOfDengues) {
+		this.numberOfDengues = numberOfDengues;
+	}
 	public String getDetailedLocation() {
 		return detailedLocation;
 	}
@@ -35,18 +46,6 @@ public class EmergencyCall implements Comparable<EmergencyCall> {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public Location getLocation() {
-		return location;
-	}
-	public void setLocation(Location location) {
-		this.location = location;
-	}
-	public String getTypeOfAssistance() {
-		return typeOfAssistance;
-	}
-	public void setTypeOfAssistance(String typeOfAssistance) {
-		this.typeOfAssistance = typeOfAssistance;
-	}
 	public Date getReportingTime() {
 		return reportingTime;
 	}
@@ -58,12 +57,6 @@ public class EmergencyCall implements Comparable<EmergencyCall> {
 	}
 	public void setCause(Cause cause) {
 		this.cause = cause;
-	}
-	public boolean isHighPriority() {
-		return highPriority;
-	}
-	public void setHighPriority(boolean highPriority) {
-		this.highPriority = highPriority;
 	}
 	
 	/**
@@ -77,17 +70,34 @@ public class EmergencyCall implements Comparable<EmergencyCall> {
 	 * @param highPriority
 	 * @param location
 	 */
-	public EmergencyCall(String name, String phoneNumber, String detailedLocation, String typeOfAssistance,
-			Date reportingTime, Cause cause, boolean highPriority, Location location) {
+	public EmergencyCall(String name, String phoneNumber, String detailedLocation,
+			Date reportingTime, Cause cause) {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.detailedLocation = detailedLocation;
-		this.typeOfAssistance = typeOfAssistance;
 		this.reportingTime = reportingTime;
 		this.cause = cause;
-		this.highPriority = highPriority;
-		this.location = location;
 	}
+
+	/**
+	 * Constructor used for dengue or haze, uses a boolean parameter to tell the difference
+	 * @param location
+	 * @param detailedLocation
+	 * @param numericalValue
+	 * @param isDengue
+	 */
+	public EmergencyCall(String detailedLocation, int numericalValue, Cause cause) {
+		if (cause == Cause.DENGUE) {
+			this.numberOfDengues = numericalValue;
+		}
+		else if (cause == Cause.HAZE) {
+			this.psi = numericalValue;
+		}
+		this.detailedLocation = detailedLocation;
+		this.cause = cause;
+	}
+	
+	
 	
 	/**
 	 * Empty constructor, mainly used for testing purposes. Kept for flexibility.
@@ -97,30 +107,23 @@ public class EmergencyCall implements Comparable<EmergencyCall> {
 	}
 	
 	/**
-	 * Implementation of the comparable interface. Sorts first by high priority, and then by location.
-	 * Uses the sortingValue field of the Location enum for the sorting by location.
+	 * Implementation of the comparable interface. Sorts by type of incident.
 	 */
 	public int compareTo(EmergencyCall other) {
-		if (this.highPriority && ! other.highPriority) {
+		if (this.psi != 0) {
 			return -1;
 		}
-		else if (!this.highPriority && other.highPriority) {
+		else if  (other.psi != 0){
+			return 1;
+		}
+		else if (this.numberOfDengues != 0) {
+			return -1;
+		}
+		else if (other.numberOfDengues != 0) {
 			return 1;
 		}
 		else {
-		if (this.location.getSortingValue() < other.location.getSortingValue()) {
 			return -1;
-		}
-		else if (this.location.getSortingValue() == other.location.getSortingValue()) {
-			if (this.reportingTime.getTime() < other.reportingTime.getTime()) {
-				return -1;
-			}
-			else
-				return 1;
-		}
-		else {
-			return 1;
-		}
 		}
 	}
 }
