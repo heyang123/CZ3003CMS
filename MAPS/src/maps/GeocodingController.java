@@ -36,7 +36,8 @@ public class GeocodingController {
 	 */
 	public GeocodingController(){
 		apiUrlprefix="https://maps.googleapis.com/maps/api/geocode/json?address=";
-		apiUrlsuffix="&sensor=false&key=AIzaSyAN1O3gbgwQTf4UFPfUwZ9y51W6Dq1I9Qc";
+		//apiUrlsuffix="&sensor=false&key=AIzaSyAN1O3gbgwQTf4UFPfUwZ9y51W6Dq1I9Qc";
+		apiUrlsuffix="&sensor=false&key=AIzaSyD5HKHXRWjMpCzgUhQV0Q3hXbtgGOP0wdY";
 	}
 	
 	/**

@@ -35,10 +35,6 @@ public class MapsController {
 		for(int i=0; i<eCtrl.getNumEmergencies(); i++){
 			String addr = eCtrl.getAddressAti(i);
 			double[] latlng = geoCtrl.getLatLng(addr);
-			//System.out.println( "Lat" );
-			//System.out.println(latlng[0]);
-			//System.out.println( "Lng" );
-			//System.out.println(latlng[1]);
 			if(latlng[0]>=-90 && latlng[0]<=90 && latlng[1]>=-180 && latlng[1]<=180){ // latitude and longitude of only valid addresses must be added
 				String iconUrl = createIconUrl(eCtrl.getCrisisAti(i));
 				Marker m = new Marker(latlng, iconUrl);
@@ -56,8 +52,6 @@ public class MapsController {
 	private String createIconUrl(String crisis){
 		String[] crisisWords = crisis.split(" ");
 		String url = "icons/"+crisisWords[0].toLowerCase()+".png";
-		//System.out.println("created");
-		//System.out.println(url);
 		return url;
 	}
 	
@@ -87,8 +81,6 @@ public class MapsController {
 	 * @param i a particular index {@param i} of {@link markers}
 	 */
 	public double getLngOfMarkerAti(int i){
-		//System.out.println("lng");
-		//System.out.println(markers.get(i).getLoc()[1]);
 		return markers.get(i).getLoc()[1];
 	}
 	

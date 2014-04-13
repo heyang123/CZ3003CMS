@@ -1,5 +1,6 @@
 package maps;
 import java.util.*;
+import maps.test.EmergencyFactoryStub;
 
 import maps.Emergency;
 /**
@@ -24,17 +25,14 @@ public class EmergenciesController {
 	private List<String>correspondingCrisis = new ArrayList<String>();
 	
 	/**
-	 * Loads data into {@link addresses}, {@link correspondingContents} and {@link correspondingCrisis} by looping through all instances of {@link Emergency}, which each fetch data from the server.
+	 * Loads data into {@link addresses}, {@link correspondingContents} and {@link correspondingCrisis} by looping through all instances of {@link Emergency}, which each fetch data from the server or stub.
 	 */
 	public void fetchAllEmergencies(){
-		/// Temporarily hard-coded
-		/// Loop will be here
-		Emergency E1 = new Emergency("HAZE", "2pm", "c1", "1234", "41 Student Walk, Singapore", "639549", "abc", "processing", "o1");
-		createContent(E1);
-		Emergency E2 = new Emergency("HAZE", "2pm", "c2", "4321", "36 Nanyang Crescent, Singapore", "637635", "pqr", "completed", "o2");
-		createContent(E2);
-		Emergency E3 = new Emergency("DENGUE", "2pm", "c3", "7891", "50 Nanyang Avenue, Singapore", "639798", "xyz", "completed", "o1");
-		createContent(E3);
+		EmergencyFactoryStub stub = new EmergencyFactoryStub();
+		Emergency[] emergencyList = stub.getEmergencies();
+		for(int ne=0; ne<emergencyList.length; ne++){
+			createContent(emergencyList[ne]);
+		}
 	}
 	
 	/**
