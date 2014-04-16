@@ -7,13 +7,14 @@
 <!-- meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="refresh" content="1800" />
 <style type="text/css">
 	html { height: 100% }
     body { height: 100%; margin: 0; padding: 0 }
     .outerdiv{height:100%}
-    #maphead { width: 900px; text-align:center;}
-    #mapdisp { height: 500px; width: 900px;}
-    .navbar{width:900px;}
+    #maphead { width: 865px; text-align:center;}
+    #mapdisp { height: 500px; width: 865px;}
+    .navbar{width:865px;}
     .heading{margin-left:auto; margin-right:auto; text-align:center;}
     .navbar .navbar-nav {
   display: inline-block;
@@ -58,21 +59,41 @@
     		</em></small></p>
     	</div>
     	<div id="mapdisp"></div>
-    	<!--  div class = "table-responsive">
-    		<table class="table table-hover ">
+    	<p style="text-align:center;"><strong>Civil Defence Shelters (MRT)</strong></p>
+    	<div class = "table-responsive">
+    		<table class="table table-hover">
     			<tr>
-    				<th>Crisis</th>
-    				<th>Time</th>
-    				<th>Caller</th>
-    				<th>Phone</th>
-    				<th>Address</th>
-    				<th>Pin Code</th>
-    				<th>Description</th>
-    				<th>Status</th>
-    				<th>Operator</th>
+    				<th>North-South Line</th>
+    				<th>East-West Line</th>
+    				<th>North-East Line</th>
+    				<th>Circle Line</th>
+    			</tr>
+    			<tr>
+    				<td>Braddell</td>
+    				<td>Lavender</td>
+    				<td>Harbourfront</td>
+    				<td>Mountbatten</td>
+    			</tr>
+    			<tr>
+    				<td>Newton</td>
+    				<td>Bugis</td>
+    				<td>Outram Park</td>
+    				<td>Dakota</td>
+    			</tr>
+    			<tr>
+    				<td>Somerset</td>
+    				<td>Tiong Bahru</td>
+    				<td>Chinatown</td>
+    				<td>MacPherson</td>
+    			</tr>
+    			<tr>
+    				<td>Raffles Place</td>
+    				<td>&nbsp;</td>
+    				<td>Clarke Quay</td>
+    				<td>Bartley</td>
     			</tr>
 			</table>
-		</div-->
+		</div>
     </div>
     <div class="col-lg-2 col-sm-2"></div>
 </div>
@@ -164,6 +185,7 @@ function loadScript() {
 	script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyAN1O3gbgwQTf4UFPfUwZ9y51W6Dq1I9Qc&sensor=true&libraries=weather&callback=initialize";
 	document.body.appendChild(script);
 }
+
 
 window.onload = loadScript;  // function loadScript() is called as soon as window loads
 </script>
