@@ -59,6 +59,7 @@
     		</em></small></p>
     	</div>
     	<div id="mapdisp"></div>
+    	<p style="text-align:center;"><strong>Key:&nbsp;&nbsp;</strong>Dengue=><img src="icons/dengue.png">&nbsp;&nbsp;Haze=><img src="icons/haze.png">&nbsp;&nbsp;Other=><img src="icons/marker.jpeg" width="32" height=37""></p>
     	<p style="text-align:center;"><strong>Civil Defence Shelters (MRT)</strong></p>
     	<div class = "table-responsive">
     		<table class="table table-hover">
